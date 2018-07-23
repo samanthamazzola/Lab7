@@ -1,0 +1,6 @@
+/Users/samanthamazzola/Projects/Lab7/Lab7/bin/Debug/Lab7.exe
+/Users/samanthamazzola/Projects/Lab7/Lab7/bin/Debug/Lab7.pdb
+/Users/samanthamazzola/Projects/Lab7/Lab7/obj/x86/Debug/Lab7.csprojResolveAssemblyReference.cache
+/Users/samanthamazzola/Projects/Lab7/Lab7/obj/x86/Debug/Lab7.csproj.CoreCompileInputs.cache
+/Users/samanthamazzola/Projects/Lab7/Lab7/obj/x86/Debug/Lab7.exe
+/Users/samanthamazzola/Projects/Lab7/Lab7/obj/x86/Debug/Lab7.pdb
