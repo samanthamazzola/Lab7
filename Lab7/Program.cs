@@ -36,9 +36,14 @@ namespace Lab7
             //write a program that validates phone number
             Console.WriteLine("Please enter a valid phone number: ");
             string phoneNumberInput = Console.ReadLine();
-            while (!Regex.IsMatch(phoneNumberInput, @"^[A-Z{1}[a-zA-Z]{0,29}$"))
+            while (!Regex.IsMatch(phoneNumberInput, @"^\d{3}\-\d{3}\-\d{4}$"))
             {
                 Console.WriteLine("Sorry, phone number is not valid!");
+                phoneNumberInput = Console.ReadLine();
+            }
+            while (Regex.IsMatch(phoneNumberInput, @"^\d{3}\-\d{3}\-\d{4}$"))
+            {
+                Console.WriteLine();
                 phoneNumberInput = Console.ReadLine();
             }
             //check if the user input matches the pattern (regular expression)
