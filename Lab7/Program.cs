@@ -8,63 +8,44 @@ namespace Lab7
         public static void Main(string[] args)
         {
             //write a program that validates user name
-            Console.WriteLine("Please enter a valid Name: ");
-            string userInput = Console.ReadLine();
-            while (!Regex.IsMatch(userInput, @"^[A-Z]{1}[a-zA-Z]{0,29}$"))
-            //escape sequence; so that you can do and "@" or print "quotes" ( \n \t \'' \\ )
-            //the @ first turns off all escape sequences
-            {
-                Console.WriteLine("Sorry, name is not valid!");
-                userInput = Console.ReadLine(); //loops back through the original prompt until valid input
-            }
+            // catches if the input isn't valid input
+            string userName = GetValidInput(@"^[A-Z]{1}[a-zA-Z]{0,29}$", "Please enter a valid name: ", "Sorry, name is not valid!");
 
 
             //write a program that validates email
-            Console.Write("Please enter a valid email: ");
-            string emailInput = Console.ReadLine();
-            while(!Regex.IsMatch(emailInput, @"^[a-zA-Z\d]{1,30}\@[a-zA-Z\d]{5,30}\.[a-z]{2,3}$"))
-            {
-                Console.WriteLine("Sorry, email is not valid!");
-                emailInput = Console.ReadLine();
-            }
-            while (Regex.IsMatch(emailInput, @"^[a-zA-Z\d]{1,30}\@[a-zA-Z\d]{5,30}\.[a-z]{2,3}$"))
-            {
-                Console.WriteLine("Email is valid!");
-                break;
-            }
+            // catches if the input isn't valid input
+            string userEmail = GetValidInput(@"^[a-zA-Z\d]{1,30}\@[a-zA-Z\d]{5,30}\.[a-z]{2,3}$", "Please enter a valid email address: ", "Sorry, email is not valid!");
+            Console.WriteLine("Email " + userEmail + " is valid!");
+
 
             //write a program that validates phone number
-            Console.WriteLine("Please enter a valid phone number: ");
-            string phoneNumberInput = Console.ReadLine();
-            while (!Regex.IsMatch(phoneNumberInput, @"^\d{3}\-\d{3}\-\d{4}$"))
-            {
-                Console.WriteLine("Sorry, phone number is not valid!");
-                phoneNumberInput = Console.ReadLine();
-            }
-            while (Regex.IsMatch(phoneNumberInput, @"^\d{3}\-\d{3}\-\d{4}$"))
-            {
-                Console.WriteLine("Phone number is valid: "+phoneNumberInput);
-                break;
-            }
+            string phoneNumberInput = GetValidInput(@"^\d{3}\-\d{3}\-\d{4}$", "Please enter a valid phone number: ", "Sorry, phone number is not valid!");
+            Console.WriteLine("Phone number is valid: " + phoneNumberInput);
 
             //write a program that validates date
-            Console.Write("Please enter a valid date: ");
-            string dateInput = Console.ReadLine();
-            while (!Regex.IsMatch(dateInput, @"^\d{2}\/\d{2}\/\d{4}$"))
+            string dateInput = GetValidInput(@"^(((0[1-9]|[12]\d|3[01])-(0[13578]|1[02])-((19|[2-9]\d)\d{2}))|((0[1-9]|[12]\d|30)-(0[13456789]|1[012])-((19|[2-9]\d)\d{2}))|((0[1-9]|1\d|2[0-8])-02-((19|[2-9]\d)\d{2}))|(29-02-((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))))$", "Please enter a valid date: ", "Sorry, date is not valid!");
+        }
+
+        //outside the main class
+        public static string GetValidInput(string pattern, string userMessage, string errorMessage)
+        //this method returns method based off of valid pattern input
+
+        {
+            Console.WriteLine(userMessage);
+            string userInput = Console.ReadLine();
+
+
+            while (!Regex.IsMatch(userInput, pattern))
             {
-                Console.WriteLine("Sorry, date is not valid!");
-                dateInput = Console.ReadLine();
-            }
-            while (Regex.IsMatch(dateInput, @"^\d{2}\/\d{2}\/\d{4}$"))
-            {
-                Console.WriteLine();
-                dateInput = Console.ReadLine();
+                Console.WriteLine(errorMessage);
+                userInput = Console.ReadLine(); //loops back through original prompt until 
             }
 
-            //check if the user input matches the pattern (regular expression)
-            // class Regex (see above the using statement for the Regex class made above)
-            // IsMatch (look at right click debug "quick fix"
-           
+            return userInput;
         }
     }
 }
+
+//check if the user input matches the pattern (regular expression)
+// class Regex (see above the using statement for the Regex class made above)
+// IsMatch (look at right click debug "quick fix"
